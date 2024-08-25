@@ -62,8 +62,9 @@ jobs:
 
     - name: Upload to S3
       if: env.upload == 'true'
-      run: aws s3 cp glue_job.py s3://awsgluepocc/glue_job.py
-           aws s3 cp current_hash.txt s3://awsgluepocc/previous_hash.txt
+      run: | 
+          aws s3 cp glue_job.py s3://awsgluepocc/glue_job.py
+          aws s3 cp current_hash.txt s3://awsgluepocc/previous_hash.txt
 
     - name: Upload current hash to S3
       if: env.upload == 'true'
