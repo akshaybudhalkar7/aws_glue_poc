@@ -3,7 +3,7 @@ name: Deploy Glue Job
 on:
   push:
     branches:
-      - main
+      - branch-101
 
 jobs:
   deploy:
@@ -22,7 +22,7 @@ jobs:
       run: |
         pip install -r requirements.txt
 
-    - name: Upload to S3
+    - name: AWS Credentials Configure
       uses: aws-actions/configure-aws-credentials@v4
       with:
         role-to-assume: arn:aws:iam::${{ inputs.account_number}}:role/${{inputs.environment}}-compare-file-utility-oidc-role
