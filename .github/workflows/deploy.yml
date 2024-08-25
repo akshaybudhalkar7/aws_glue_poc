@@ -1,9 +1,21 @@
 name: Deploy Glue Job
 
 on:
-  push:
-    branches:
-      - main
+  workflow_call:
+    inputs:
+      region:
+        required: true
+        default: us-east-1
+        type: string
+      account:
+        required: true
+        type: string
+      account_number:
+        required: true
+        type: string
+      environment:
+        required: true
+        type: string
 
 jobs:
   deploy:
