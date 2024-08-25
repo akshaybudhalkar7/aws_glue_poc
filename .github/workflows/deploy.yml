@@ -51,13 +51,14 @@ jobs:
 
     - name: Compare hashes
       id: compare_hashes
-      run: if ! cmp -s current_hash.txt previous_hash.txt; then
+      run: |
+          if ! cmp -s current_hash.txt previous_hash.txt; then
             echo "File has changed, uploading..."
             echo "upload=true" >> $GITHUB_ENV
-            else
-              echo "File has not changed, skipping upload..."
-              echo "upload=false" >> $GITHUB_ENV
-            fi
+          else
+            echo "File has not changed, skipping upload..."
+            echo "upload=false" >> $GITHUB_ENV
+          fi
 
     - name: Upload to S3
       if: env.upload == 'true'
