@@ -3,7 +3,7 @@ name: Deploy Glue Job
 on:
   push:
     branches:
-      - branch-101
+      - main
 
 jobs:
   deploy:
